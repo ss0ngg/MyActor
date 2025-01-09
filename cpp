@@ -6,7 +6,7 @@
 // Sets default values
 AMyActor::AMyActor()
 {
- 	// Set this actor to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
+	// Set this actor to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = true;
 
 	CurrentPosition = FVector(0, 0, 0);
@@ -16,7 +16,7 @@ AMyActor::AMyActor()
 void AMyActor::BeginPlay()
 {
 	Super::BeginPlay();
-	
+
 	Move();
 }
 
@@ -28,17 +28,15 @@ void AMyActor::Tick(float DeltaTime)
 }
 
 void AMyActor::Move() {
-	
+
 	for (int i = 0; i < 10; i++) {
-		int StepX = Step();
-		int StepY = Step();
+		int x = Step();
+		int y = Step();
 
-		CurrentPosition.X += StepX;
-		CurrentPosition.Y += StepY;
+		CurrentPosition.X += x;
+		CurrentPosition.Y += y;
 
-		UE_LOG(LogTemp, Warning, TEXT("Position : (%d,%d)"), i + 1,
-			static_cast<int>(CurrentPosition.X),
-			static_cast<int>(CurrentPosition.Y));
+		UE_LOG(LogTemp, Warning, TEXT("Step %d: (%d, %d)"), i + 1, (int)CurrentPosition.X, (int)CurrentPosition.Y);
 	}
 }
 
